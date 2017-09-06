@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="news">
+	<typeAlias alias="news" type="com.unclechen.sp.domain.News"/>
+
+	<select id="getNews" parameterClass="java.util.HashMap" resultClass="news">
+		select * from t_news where 1=1
+		<isNotEmpty prepend="and" property="keywordsisnull">
+			keywords is null
+		</isNotEmpty>
+		limit #start#,#size#
+	</select>
+
+	<select id="getNewsCount" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+		select count(1) from t_news WHERE 1=1
+		<isNotEmpty prepend="and" property="keywordsisnull">
+			keywords is null
+		</isNotEmpty>
+	</select>
+
+	<insert id="putNews" parameterClass="java.util.HashMap">
+		insert into t_news(title,content,type,url) values (#title#,#content#,#type#,#url#)
+	</insert>
+
+	<update id="updatenewsByautoid" parameterClass="java.util.HashMap">
+		update t_news set keywords= #keywords# where autoid= #autoid#
+	</update>
+
+</sqlMap>

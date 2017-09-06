@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig 
+PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<!-- settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="80"
+		maxSessions="50" maxTransactions="20" useStatementNamespaces="true" 
+	/ -->
+		
+	<settings
+         cacheModelsEnabled="false"
+         enhancementEnabled="true"
+         lazyLoadingEnabled="true"
+         errorTracingEnabled="true"
+         maxRequests="512"
+         maxSessions="128"
+         maxTransactions="32"
+         useStatementNamespaces="true"
+         defaultStatementTimeout="120"
+         statementCachingEnabled="true"
+         classInfoCacheEnabled="true"
+	/>
+
+	<!-- 使用spring之后，数据源的配置移植到了spring上，所以iBATIS本身的配置可以取消 -->
+	<!--<sqlMap resource="maps/adminUser.xml" />-->
+    <sqlMap resource="maps/news.xml" />
+</sqlMapConfig>

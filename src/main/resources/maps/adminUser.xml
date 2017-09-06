@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="admin_user">
+	<typeAlias alias="adminUser" type="com.unclechen.sp.domain.AdminUser"/>
+
+	<select id="getAdminByLogin" parameterClass="adminUser" resultClass="adminUser">
+		select * from admin_user where user_name=#user_name# and pwd=#pwd# limit 1
+	</select>
+
+</sqlMap>
