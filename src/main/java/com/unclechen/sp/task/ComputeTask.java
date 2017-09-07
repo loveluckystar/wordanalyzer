@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class ComputeTask {
 
     // 抓取腾讯新闻，按照类别和时间爬取 每天下午两点执行
-    @Scheduled(cron="0 20 * * * ? ")
+    @Scheduled(cron="0 45 * * * ? ")
     public void grabNewsByType(){
         Spider spider = new Spider(new QQNewsPageProcessor());
         for(String type: Constant.QQnewsTypeArray) {
@@ -84,7 +84,7 @@ public class ComputeTask {
     }
 
     // 计算新闻在某类文章中出现的概率 每周下午三点执行
-    @Scheduled(cron="0 30 * * * ? ")
+    @Scheduled(cron="0 55 * * * ? ")
     public void computeNewsProbablilityForType(){
         // 删除之前缓存
         RedisManager.clean("keyword:");
